@@ -1,150 +1,265 @@
-# Prediksi Ukuran Sepatu Berdasarkan Tinggi Badan
-### Tugas Kelompok 2 – PBL Machine Learning
+# Shoe Size Prediction Using Linear Regression
 
-Proyek ini merupakan implementasi **Machine Learning menggunakan metode Linear Regression** untuk memprediksi ukuran sepatu seseorang berdasarkan tinggi badannya.
+**Group Assignment 2 – Project-Based Learning (PBL) | Machine Learning**
 
-Model dilatih menggunakan dataset yang berisi pasangan data tinggi badan dan ukuran sepatu. Selanjutnya, model mempelajari hubungan antara kedua variabel tersebut untuk menghasilkan prediksi ukuran sepatu berdasarkan tinggi badan yang diberikan.
+A Machine Learning project that implements **Linear Regression** to predict shoe size based on a person's height. This project explores the relationship between height and shoe size through data analysis, model training, prediction, and performance evaluation.
 
-## 🎯 Tujuan Proyek
+---
 
-1. Memahami penerapan algoritma Linear Regression.
-2. Menganalisis hubungan antara tinggi badan dan ukuran sepatu.
-3. Melakukan proses Exploratory Data Analysis (EDA).
-4. Melatih model menggunakan data training.
-5. Mengevaluasi performa model menggunakan data testing.
-6. Melakukan prediksi ukuran sepatu berdasarkan data baru.
+## 1. Project Overview
 
-## 🛠️ Teknologi dan Library
+This project aims to develop a predictive model using the Linear Regression algorithm to estimate shoe size based on height.
 
-Proyek ini menggunakan beberapa teknologi dan library Python berikut:
+The model learns the relationship between two variables from a dataset containing height and shoe size observations. After training, the model can generate predictions for new height inputs.
 
-| Teknologi / Library | Kegunaan |
+The implementation is developed using Python and Scikit-learn, with Google Colab as the development environment.
+
+## 2. Project Objectives
+
+The main objectives of this project are:
+
+- Understand the fundamentals of supervised Machine Learning.
+- Implement the Linear Regression algorithm for a regression problem.
+- Perform Exploratory Data Analysis (EDA) to understand the dataset.
+- Identify the relationship and correlation between height and shoe size.
+- Train and test a predictive model using a dataset.
+- Evaluate model performance using regression evaluation metrics.
+- Generate shoe size predictions based on new input data.
+
+## 3. Technology Stack
+
+The project utilizes the following technologies and Python libraries:
+
+| Technology | Description |
 |---|---|
-| Python | Bahasa pemrograman utama |
-| Google Colab | Lingkungan pengembangan dan eksekusi program |
-| NumPy | Pengolahan data numerik |
-| Pandas | Membaca dan mengelola dataset |
-| Matplotlib | Visualisasi data |
-| Scikit-learn | Implementasi Linear Regression dan evaluasi model |
-| SciPy | Mendukung pengolahan statistik |
+| Python | Primary programming language |
+| Google Colab | Cloud-based development environment |
+| NumPy | Numerical computing and array manipulation |
+| Pandas | Data processing and analysis |
+| Matplotlib | Data visualization |
+| Scikit-learn | Machine Learning model development and evaluation |
+| SciPy | Scientific and statistical computing |
 
-## 📊 Dataset
+## 4. Dataset Description
 
-Dataset yang digunakan berisi dua variabel utama:
+The dataset is provided in CSV format and contains two primary variables used for model development.
 
-| Variabel | Keterangan |
+| Variable | Type | Description |
+|---|---|---|
+| X | Independent Variable | Height |
+| Y | Dependent Variable | Shoe Size |
+
+**Dataset Source:** [Google Drive – Shoe Size Dataset](https://drive.google.com/uc?id=12y4yjLottmCkwRcky7uH_3lneQluY5tC)
+
+The dataset is loaded into the Python environment using Pandas and subsequently processed for exploratory analysis and model training.
+
+## 5. Methodology
+
+This project follows a structured Machine Learning workflow consisting of the following stages:
+
+### 5.1 Data Loading and Preparation
+
+- Import the required Python libraries.
+- Connect Google Colab to Google Drive.
+- Load the CSV dataset using Pandas.
+- Define the independent and dependent variables.
+
+### 5.2 Exploratory Data Analysis (EDA)
+
+EDA is performed to understand the characteristics, distribution, and relationships within the dataset.
+
+The analysis includes:
+
+- **Kernel Density Estimation (KDE):** Examines the distribution of height and shoe size.
+- **Boxplot:** Identifies data distribution and potential outliers.
+- **Scatter Plot:** Visualizes the relationship between height and shoe size.
+- **Correlation Analysis:** Measures the correlation between the independent and dependent variables.
+
+### 5.3 Data Splitting
+
+The dataset is divided into training and testing subsets using Scikit-learn's `train_test_split()` function.
+
+| Dataset | Proportion |
+|---|---:|
+| Training Data | 65% |
+| Testing Data | 35% |
+
+The training dataset is used to build the model, while the testing dataset is used to evaluate its predictive performance.
+
+### 5.4 Model Development
+
+The project uses the **Linear Regression** algorithm implemented through Scikit-learn.
+
+The model is initialized using:
+
+```python
+regressor = linear_model.LinearRegression()
+```
+
+### 5.5 Model Training
+
+The model is trained using the training dataset through the `fit()` method.
+
+During this process, the algorithm learns the linear relationship between height and shoe size by determining the optimal regression coefficients.
+
+### 5.6 Regression Equation
+
+After training, the model produces two important parameters:
+
+- **Coefficient (M):** Represents the slope of the regression line.
+- **Intercept (b):** Represents the constant value of the regression equation.
+
+The resulting prediction equation is:
+
+\[
+Y = M X + b
+\]
+
+Where:
+
+- Y = Predicted shoe size.
+- X = Height.
+- M = Regression coefficient.
+- b = Intercept.
+
+### 5.7 Model Evaluation
+
+Model performance is evaluated using the testing dataset and the following regression metrics:
+
+| Evaluation Metric | Description |
 |---|---|
-| X (Independent Variable) | Tinggi Badan |
-| Y (Dependent Variable) | Ukuran Sepatu |
+| MAE (Mean Absolute Error) | Measures the average absolute difference between actual and predicted values. |
+| MSE (Mean Squared Error) | Measures the average squared difference between actual and predicted values. |
+| Median Absolute Error | Measures the median absolute difference between actual and predicted values. |
+| R² Score | Measures how well the model explains the variance in the target variable. |
 
-Dataset disimpan dalam format CSV dan diakses melalui Google Drive.
+These metrics provide insights into the accuracy and predictive performance of the developed model.
 
-**Dataset:** [Google Drive – Dataset Prediksi Ukuran Sepatu](https://drive.google.com/uc?id=12y4yjLottmCkwRcky7uH_3lneQluY5tC)
+### 5.8 Prediction and Visualization
 
-## ⚙️ Tahapan Proses Machine Learning
+After the training and evaluation stages, the model is used to predict shoe size based on new height data.
 
-### 1. Import Library
-Mengimpor library yang dibutuhkan untuk pengolahan data, visualisasi, pembuatan model, dan evaluasi.
-
-### 2. Menghubungkan Google Drive
-Menghubungkan Google Colab dengan Google Drive untuk mengakses dataset.
-
-### 3. Import Dataset
-Membaca dataset CSV menggunakan Pandas.
-
-### 4. Exploratory Data Analysis (EDA)
-Melakukan analisis awal terhadap dataset melalui beberapa visualisasi:
-
-- **KDE Plot:** Melihat distribusi data tinggi badan dan ukuran sepatu.
-- **Boxplot:** Mengidentifikasi persebaran data dan kemungkinan outlier.
-- **Scatter Plot:** Melihat hubungan antara tinggi badan dan ukuran sepatu.
-- **Correlation:** Menghitung korelasi antara kedua variabel.
-
-### 5. Menentukan Variabel X dan Y
-Menentukan variabel independen dan dependen:
-
-- X = Tinggi Badan.
-- Y = Ukuran Sepatu.
-
-### 6. Membagi Data Training dan Testing
-Dataset dibagi menggunakan `train_test_split()` dengan komposisi:
-
-- 65% untuk data training.
-- 35% untuk data testing.
-
-### 7. Membuat dan Melatih Model
-Membuat model menggunakan algoritma `LinearRegression()` dari Scikit-learn, kemudian melatihnya menggunakan data training melalui fungsi `fit()`.
-
-### 8. Menentukan Koefisien dan Intercept
-Mengambil nilai koefisien regresi (M) dan intercept (b) untuk membentuk persamaan regresi linear.
-
-Rumus Linear Regression:
-
-**Y = M(X) + b**
-
-Keterangan:
-- Y = Hasil prediksi ukuran sepatu.
-- M = Koefisien regresi (slope).
-- X = Tinggi badan.
-- b = Intercept (konstanta).
-
-### 9. Evaluasi Model
-Mengukur performa model menggunakan data testing dengan beberapa metrik evaluasi:
-
-| Metrik | Keterangan |
-|---|---|
-| MAE (Mean Absolute Error) | Mengukur rata-rata selisih absolut antara nilai aktual dan prediksi. |
-| MSE (Mean Squared Error) | Mengukur rata-rata kuadrat selisih antara nilai aktual dan prediksi. |
-| Median Absolute Error | Mengukur nilai tengah dari selisih absolut antara nilai aktual dan prediksi. |
-| R² Score | Mengukur kemampuan model dalam menjelaskan variasi data aktual. |
-
-### 10. Prediksi Data Baru
-Model digunakan untuk memprediksi ukuran sepatu berdasarkan tinggi badan baru.
-
-Contoh input:
+Example input:
 
 ```python
 tinggi_badan = 164.5
 ```
 
-Model akan menghasilkan prediksi ukuran sepatu berdasarkan tinggi badan tersebut.
+The model generates a predicted shoe size using the trained regression parameters.
 
-### 11. Perbandingan Data Aktual dan Prediksi
-Membuat tabel perbandingan yang berisi:
+A scatter plot is also generated to compare actual testing values with the regression line.
 
-- Tinggi Badan.
-- Data Aktual.
-- Data Prediksi.
+### 5.9 Actual vs. Predicted Comparison
 
-Hasil perbandingan digunakan untuk melihat perbedaan antara ukuran sepatu aktual dan hasil prediksi model.
+The final stage generates a comparison table containing:
 
-## 🚀 Cara Menjalankan Program
+- Height.
+- Actual Shoe Size.
+- Predicted Shoe Size.
 
-1. Buka [Google Colab](https://colab.research.google.com/).
-2. Buat notebook baru.
-3. Salin kode program ke dalam notebook.
-4. Pastikan dataset Google Drive dapat diakses.
-5. Jalankan seluruh kode program secara berurutan.
-6. Amati hasil visualisasi, evaluasi model, dan prediksi ukuran sepatu.
+This comparison helps assess the difference between actual observations and the model's predictions.
 
-## 📁 Struktur Repository
+## 6. Project Workflow
+
+The overall Machine Learning workflow is illustrated below:
 
 ```text
-Prediksi-Ukuran-Sepatu/
+Dataset (CSV)
+      |
+      v
+Data Loading & Preparation
+      |
+      v
+Exploratory Data Analysis
+      |
+      v
+Feature & Target Selection
+      |
+      v
+Train-Test Split (65:35)
+      |
+      v
+Linear Regression Model
+      |
+      v
+Model Training
+      |
+      v
+Model Evaluation
+      |
+      v
+New Data Prediction
+      |
+      v
+Actual vs. Predicted Comparison
+```
+
+## 7. Repository Structure
+
+```text
+shoe-size-prediction/
 │
 ├── README.md
 │
 └── Prediksi_Ukuran_Sepatu.ipynb
 ```
 
-## 📌 Kesimpulan
+| File | Description |
+|---|---|
+| `README.md` | Project documentation. |
+| `Prediksi_Ukuran_Sepatu.ipynb` | Jupyter Notebook containing the complete Machine Learning implementation. |
 
-Melalui proyek ini, algoritma Linear Regression diterapkan untuk memprediksi ukuran sepatu berdasarkan tinggi badan. Proses dimulai dari pengumpulan dan analisis dataset, pembagian data training dan testing, pelatihan model, hingga evaluasi dan prediksi menggunakan data baru.
+## 8. Installation and Execution
 
-Hasil evaluasi model dapat digunakan untuk mengetahui seberapa baik algoritma Linear Regression dalam mempelajari hubungan antara tinggi badan dan ukuran sepatu.
+This project can be executed directly using Google Colab without requiring a local Python environment.
+
+**Execution Steps:**
+
+1. Open [Google Colab](https://colab.research.google.com/).
+2. Upload or open the project notebook.
+3. Ensure the dataset is accessible through the provided Google Drive link.
+4. Run the notebook cells sequentially.
+5. Review the EDA visualizations, regression equation, evaluation metrics, and prediction results.
+
+**Dependencies:**
+
+```bash
+pip install numpy pandas matplotlib scikit-learn scipy
+```
+
+## 9. Expected Outcomes
+
+Upon successful execution, the project produces the following outputs:
+
+1. Statistical and visual analysis of the dataset.
+2. Correlation analysis between height and shoe size.
+3. A trained Linear Regression model.
+4. A linear regression equation based on the training data.
+5. Model evaluation results using MAE, MSE, Median Absolute Error, and R² Score.
+6. Shoe size predictions based on new height inputs.
+7. A comparison between actual and predicted values.
+
+## 10. Limitations
+
+This project uses a simple Linear Regression model with height as the only independent variable.
+
+Therefore, the prediction results depend on the quality, quantity, and distribution of the available dataset. Other factors that may influence shoe size are not included in the model.
+
+The model is intended for educational purposes and demonstrates the fundamental application of regression in Machine Learning.
 
 ---
 
-**Tugas Kelompok 2 – PBL Machine Learning**  
-**Metode:** Linear Regression  
-**Topik:** Prediksi Ukuran Sepatu Berdasarkan Tinggi Badan
+## Project Information
+
+| Attribute | Details |
+|---|---|
+| Project | Shoe Size Prediction |
+| Category | Machine Learning |
+| Algorithm | Linear Regression |
+| Learning Type | Supervised Learning |
+| Problem Type | Regression |
+| Development Environment | Google Colab |
+| Programming Language | Python |
+| Assignment | Group 2 – Project-Based Learning |
+
+**Developed as part of the Group 2 Project-Based Learning (PBL) assignment.**
